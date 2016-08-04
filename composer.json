@@ -1,0 +1,22 @@
+{
+    "name": "ycrao/tinyme",
+    "description": "a tiny php framework based on flight and medoo.",
+    "homepage": "https://github.com/ycrao/tinyme",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "raoyc",
+            "email": "raoyc2009@gmail.com",
+            "homepage": "http://raoyc.com/"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9",
+        "mikecao/flight": "dev-master",
+        "catfan/medoo": "dev-master",
+        "katzgrau/klogger": "dev-master",
+        "doctrine/cache": "1.4.*",
+        "vlucas/phpdotenv": "2.0.*",
+        "phpoffice/phpexcel": "1.8.*"
+    }
+}
