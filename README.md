@@ -11,8 +11,21 @@
 
 ## Installation
 
-Just like `Laravel` installation, set `public` directory as server root path in `vhost.conf` and using composer to install or update packages.
+Just like `Laravel` installation, set `public` directory as server root path in `vhost.conf` and using `composer` to install or update packages and so on. You can do these in your terminal like below:
 
+```bash
+git clone https://github.com/ycrao/tinyme.git tinyme.dev
+cd tinyme.dev
+cp .env.example .env
+vim .env
+composer install
+cd app
+chmod -R 755 storage
+```
+
+
+
+Demo site: http://tinyme.yas.so
 
 ## Documentation
 

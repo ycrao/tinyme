@@ -1,12 +1,29 @@
 # TinyMe
 
+[![Latest Stable Version](https://poser.pugx.org/ycrao/tinyme/v/stable.svg?format=flat-square)](https://packagist.org/packages/ycrao/tinyme)
+[![Latest Unstable Version](https://poser.pugx.org/ycrao/tinyme/v/unstable.svg?format=flat-square)](https://packagist.org/packages/ycrao/tinyme)
+[![License](https://poser.pugx.org/ycrao/tinyme/license?format=flat-square)](https://packagist.org/packages/ycrao/tinyme)
+[![Total Downloads](https://poser.pugx.org/ycrao/tinyme/downloads?format=flat-square)](https://packagist.org/packages/ycrao/tinyme)
+
 >   基于 `flight` 与 `medoo` 构建的微型php框架。
 
 [English readme](README.md)
 
 ## 安装
 
-类似于 `Laravel` 项目的安装，设置服务器网站根目录到 `public` 文件夹，并使用 `composer` 来安装或更新依赖包。
+类似于 `Laravel` 项目的安装，设置服务器网站根目录到 `public` 文件夹，并使用 `composer` 来安装或更新依赖包等等操作。您可以在终端窗口执行以下命令来完成：
+
+```bash
+git clone https://github.com/ycrao/tinyme.git tinyme.dev
+cd tinyme.dev
+cp .env.example .env
+vim .env
+composer install
+cd app
+chmod -R 755 storage
+```
+
+演示站：http://tinyme.yas.so
 
 ## 文档
 

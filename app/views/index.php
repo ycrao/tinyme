@@ -74,7 +74,7 @@
             <div class="container">
                 <div class="col-lg-8 col-lg-offset-2">
                     <h2>Download TinyMe</h2>
-                    <p>You can download TinyMe for free on GitHub.</p>
+                    <p>You can download TinyMe for free on <a href="https://github.com/ycrao/tinyme">GitHub</a>.</p>
                     <a href="https://github.com/ycrao/tinyme/archive/master.zip" class="btn btn-default btn-lg">Visit Download Page</a>
                 </div>
             </div>

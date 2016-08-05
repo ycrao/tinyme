@@ -8,4 +8,4 @@
     });
     */
 
-    Flight::route('GET /', ['\\HomeController', 'index']);
+    Flight::route('GET /', ['HomeController', 'index']);
