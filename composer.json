@@ -16,7 +16,6 @@
         "catfan/medoo": "dev-master",
         "katzgrau/klogger": "dev-master",
         "doctrine/cache": "1.4.*",
-        "vlucas/phpdotenv": "2.0.*",
-        "phpoffice/phpexcel": "1.8.*"
+        "vlucas/phpdotenv": "2.0.*"
     }
 }

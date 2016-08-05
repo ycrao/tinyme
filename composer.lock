@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "158342dfca511e24249aad3c7e972875",
-    "content-hash": "fbe90a7a47772908c0fa6b450849fd57",
+    "hash": "079389aba2678a3e7ea23e2a5a096706",
+    "content-hash": "f625266c15adea2f3a6352561a4c78dd",
     "packages": [
         {
             "name": "catfan/medoo",
@@ -13,12 +13,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/catfan/Medoo.git",
-                "reference": "342e2d6a3bcf4adcac58e67593d63547139ab1ac"
+                "reference": "d845b50455893d931ee6a86e1a17276847764385"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/catfan/Medoo/342e2d6a3bcf4adcac58e67593d63547139ab1ac.zip",
-                "reference": "342e2d6a3bcf4adcac58e67593d63547139ab1ac",
+                "url": "https://packagist.phpcomposer.com/files/catfan/Medoo/d845b50455893d931ee6a86e1a17276847764385.zip",
+                "reference": "d845b50455893d931ee6a86e1a17276847764385",
                 "shasum": ""
             },
             "require": {
@@ -60,7 +60,7 @@
                 "sql",
                 "sqlite"
             ],
-            "time": "2016-02-14 16:03:42"
+            "time": "2016-07-07 17:58:29"
         },
         {
             "name": "doctrine/cache",
@@ -224,63 +224,6 @@
             "description": "Flight is a fast, simple, extensible framework for PHP. Flight enables you to quickly and easily build RESTful web applications.",
             "homepage": "http://flightphp.com",
             "time": "2016-06-15 18:09:18"
-        },
-        {
-            "name": "phpoffice/phpexcel",
-            "version": "1.8.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/PHPOffice/PHPExcel.git",
-                "reference": "372c7cbb695a6f6f1e62649381aeaa37e7e70b32"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/PHPOffice/PHPExcel/372c7cbb695a6f6f1e62649381aeaa37e7e70b32.zip",
-                "reference": "372c7cbb695a6f6f1e62649381aeaa37e7e70b32",
-                "shasum": ""
-            },
-            "require": {
-                "ext-xml": "*",
-                "ext-xmlwriter": "*",
-                "php": ">=5.2.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "PHPExcel": "Classes/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "LGPL"
-            ],
-            "authors": [
-                {
-                    "name": "Maarten Balliauw",
-                    "homepage": "http://blog.maartenballiauw.be"
-                },
-                {
-                    "name": "Mark Baker"
-                },
-                {
-                    "name": "Franck Lefevre",
-                    "homepage": "http://blog.rootslabs.net"
-                },
-                {
-                    "name": "Erik Tilt"
-                }
-            ],
-            "description": "PHPExcel - OpenXML - Read, Create and Write Spreadsheet documents in PHP - Spreadsheet engine",
-            "homepage": "http://phpexcel.codeplex.com",
-            "keywords": [
-                "OpenXML",
-                "excel",
-                "php",
-                "spreadsheet",
-                "xls",
-                "xlsx"
-            ],
-            "time": "2015-05-01 07:00:55"
         },
         {
             "name": "psr/log",
