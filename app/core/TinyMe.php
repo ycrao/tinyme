@@ -71,8 +71,7 @@ class TinyMe
 
             //Flight::log()->error(Flight::request()->ip.': '.Flight::request()->method.' '.Flight::request()->url.' not Found !');
             Flight::log()->error('404 NOT FOUND !', json_decode(json_encode(Flight::request()), true));
-            //include 'errors/404.html';
-            return Flight::render('404');
+            return self::halt(Flight::view()->fetch('404'), '404');
         });
 
         /*
@@ -216,11 +215,11 @@ class TinyMe
      * do something before sending response.
      */
     public static function halt($msg = '', $code = 200) {
-        Flight::response(false)
-            ->status($code)
-            ->header("Content-Type", "text/html; charset=utf8")
-            ->write($msg)
-            ->send();
+        return Flight::response(false)
+                        ->status($code)
+                        ->header("Content-Type", "text/html; charset=utf8")
+                        ->write($msg)
+                        ->send();
     }
 
 }

@@ -3,7 +3,8 @@
 /**
  * PageModel
  */
-class PageModel extends Model{
+class PageModel extends Model
+{
 
     protected $_table = 'tm_page';
 
