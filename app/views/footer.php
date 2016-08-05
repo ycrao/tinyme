@@ -2,7 +2,7 @@
     <footer>
         <div class="container text-center">
             <p>Template from <a href="https://startbootstrap.com/template-overviews/grayscale/">Start Bootstrap</a>.</p>
-            <p>Copyright &copy; <a href=="http://yas.so">YʌS Network</a> 2016</p>
+            <p>Copyright &copy; <a href="http://yas.so">YʌS Network</a> 2016</p>
         </div>
     </footer>
 

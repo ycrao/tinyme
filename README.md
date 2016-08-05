@@ -23,9 +23,7 @@ cd app
 chmod -R 755 storage
 ```
 
-
-
-Demo site: http://tinyme.yas.so
+Demo site: http://tinyme.yas.so .
 
 ## Documentation
 

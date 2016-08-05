@@ -23,7 +23,7 @@ cd app
 chmod -R 755 storage
 ```
 
-演示站：http://tinyme.yas.so
+演示站： http://tinyme.yas.so 。
 
 ## 文档
 
