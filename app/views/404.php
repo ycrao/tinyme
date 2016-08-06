@@ -45,7 +45,7 @@
     <footer>
         <div class="container text-center">
             <p>Template from <a href="https://startbootstrap.com/template-overviews/grayscale/">Start Bootstrap</a>.</p>
-            <p>Copyright &copy; <a href=="http://yas.so">YʌS Network</a> 2016</p>
+            <p>Copyright &copy; <a href="http://yas.so">YʌS Network</a> 2016</p>
         </div>
     </footer>
 
@@ -54,9 +54,6 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="/static/vendor/bootstrap/js/bootstrap.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 
 </body>
 
