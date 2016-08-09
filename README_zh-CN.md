@@ -16,7 +16,7 @@
 ```bash
 //使用 git
 git clone https://github.com/ycrao/tinyme.git tinyme.dev
-//或者 使用 composer
+//或者 使用 composer ，但请忽略执行下面 `composer install` 命令
 composer create-project ycrao/tinyme --prefer-dist tinyme.dev
 cd tinyme.dev
 cp .env.example .env
