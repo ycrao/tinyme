@@ -2,6 +2,7 @@
     "name": "ycrao/tinyme",
     "description": "a tiny php framework based on flight and medoo.",
     "homepage": "https://github.com/ycrao/tinyme",
+    "type": "project",
     "license": "MIT",
     "authors": [
         {
@@ -17,5 +18,8 @@
         "katzgrau/klogger": "dev-master",
         "doctrine/cache": "1.4.*",
         "vlucas/phpdotenv": "2.0.*"
+    },
+    "config": {
+        "preferred-install": "dist"
     }
 }
