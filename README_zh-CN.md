@@ -14,7 +14,10 @@
 类似于 `Laravel` 项目的安装，设置服务器网站根目录到 `public` 文件夹，并使用 `composer` 来安装或更新依赖包等等操作。您可以在终端窗口执行以下命令来完成：
 
 ```bash
+//使用 git
 git clone https://github.com/ycrao/tinyme.git tinyme.dev
+//或者 使用 composer
+composer create-project ycrao/tinyme --prefer-dist tinyme.dev
 cd tinyme.dev
 cp .env.example .env
 vim .env

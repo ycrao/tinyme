@@ -13,8 +13,12 @@
 
 Just like `Laravel` installation, set `public` directory as server root path in `vhost.conf` and using `composer` to install or update packages and so on. You can do these in your terminal like below:
 
+
 ```bash
+//using git
 git clone https://github.com/ycrao/tinyme.git tinyme.dev
+//or using composer
+composer create-project ycrao/tinyme --prefer-dist tinyme.dev
 cd tinyme.dev
 cp .env.example .env
 vim .env
