@@ -1,8 +1,6 @@
 <?php
 
 
-use \Flight;
-
 /**
  * HomeController
  */
