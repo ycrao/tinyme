@@ -3,7 +3,7 @@
 //routes
 
     /*
-    Flight::route('GET /', function(){
+    Flight::route('GET /', function () {
         return Flight::render('index');
     });
     */

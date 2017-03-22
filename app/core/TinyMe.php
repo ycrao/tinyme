@@ -63,19 +63,18 @@ class TinyMe
         Flight::map('controller', [__CLASS__, 'getController']);
 
         //halt response
-        Flight::map("halt", array(__CLASS__, "halt"));
+        Flight::map('halt', [__CLASS__, 'halt']);
 
 
         //404 error
-        Flight::map('notFound', function() {
-
+        Flight::map('notFound', function () {
             //Flight::log()->error(Flight::request()->ip.': '.Flight::request()->method.' '.Flight::request()->url.' not Found !');
             Flight::log()->error('404 NOT FOUND !', json_decode(json_encode(Flight::request()), true));
             return self::halt(Flight::view()->fetch('404'), '404');
         });
 
         /*
-        Flight::map('error', function(Exception $ex){
+        Flight::map('error', function (Exception $ex) {
             // Handle error
             Flight::log()->error('500 Error : '.$ex->getTraceAsString());
             echo $ex->getTraceAsString();
@@ -129,10 +128,10 @@ class TinyMe
      */
     public static function db($name = 'default')
     {
-        if(!isset(self::$_db[$name])) {
+        if (!isset(self::$_db[$name])) {
 
             $db = Flight::get('db.'.$name);
-            if(is_array($db)) {
+            if (is_array($db)) {
                 $db_host    = isset($db['host']) ? $db['host'] : 'localhost';
                 $db_port    = isset($db['port']) ? $db['port'] : 3306;
                 $db_user    = isset($db['user']) ? $db['user'] : 'root';
@@ -201,7 +200,7 @@ class TinyMe
     public static function getController($name) 
     {
         $class = '\\'.trim(str_replace('/', '\\', $name), '\\').'Controller';
-        if(!isset(self::$_controller[$class])) {
+        if (!isset(self::$_controller[$class])) {
             $instance = new $class();
             self::$_controller[$class] = $instance;
         }
