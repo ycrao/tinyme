@@ -14,7 +14,7 @@
     "require": {
         "php": ">=5.5.9",
         "mikecao/flight": "1.3.*",
-        "catfan/medoo": "0.9.*",
+        "catfan/medoo": "1.1.*",
         "katzgrau/klogger": "1.*",
         "doctrine/cache": "1.4.*",
         "vlucas/phpdotenv": "2.0.*"
