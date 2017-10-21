@@ -17,16 +17,16 @@ Just like `Laravel` installation, set `public` directory as server root path in 
 //using git
 git clone https://github.com/ycrao/tinyme.git tinyme.dev
 //or using composer, but skip `composer install` command below
-composer create-project --prefer-dist ycrao/tinyme tinyme.dev
-cd tinyme.dev
+composer create-project --prefer-dist ycrao/tinyme tinyme
+cd tinyme
 cp .env.example .env
 vim .env
 composer install
 cd app
 chmod -R 755 storage
+php -S 127.0.0.1:9999 -t public
 ```
-
-Demo site: http://tinyme.yas.so .
+You can view this project page by typing `http://127.0.0.1:9999` url in your browser.
 
 ## Documentation
 
