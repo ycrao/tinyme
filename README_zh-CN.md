@@ -15,10 +15,10 @@
 
 ```bash
 //使用 git
-git clone https://github.com/ycrao/tinyme.git tinyme.dev
+git clone https://github.com/ycrao/tinyme.git tinyme
 //或者 使用 composer ，但请忽略执行下面 `composer install` 命令
-composer create-project --prefer-dist ycrao/tinyme tinyme.dev
-cd tinyme.dev
+composer create-project --prefer-dist ycrao/tinyme tinyme
+cd tinyme
 cp .env.example .env
 vim .env
 composer install
