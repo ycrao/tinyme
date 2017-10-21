@@ -15,7 +15,7 @@ Just like `Laravel` installation, set `public` directory as server root path in 
 
 ```bash
 //using git
-git clone https://github.com/ycrao/tinyme.git tinyme.dev
+git clone https://github.com/ycrao/tinyme.git tinyme
 //or using composer, but skip `composer install` command below
 composer create-project --prefer-dist ycrao/tinyme tinyme
 cd tinyme
