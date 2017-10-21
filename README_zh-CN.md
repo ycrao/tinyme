@@ -24,9 +24,10 @@ vim .env
 composer install
 cd app
 chmod -R 755 storage
+php -S 127.0.0.1:9999 -t public
 ```
 
-演示站： http://tinyme.yas.so 。
+在浏览器中输入 `http://127.0.0.1:9999` 网址，您就可以看到本项目页面。
 
 ## 文档
 
