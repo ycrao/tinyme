@@ -4,12 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "079389aba2678a3e7ea23e2a5a096706",
-    "content-hash": "f625266c15adea2f3a6352561a4c78dd",
+    "content-hash": "92cfdc51ad8f3c60f557aeb6c024b66e",
     "packages": [
         {
             "name": "catfan/medoo",
-            "version": "dev-master",
+            "version": "v1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/catfan/Medoo.git",
@@ -17,7 +16,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/catfan/Medoo/d845b50455893d931ee6a86e1a17276847764385.zip",
+                "url": "https://files.phpcomposer.com/files/catfan/Medoo/d845b50455893d931ee6a86e1a17276847764385.zip",
                 "reference": "d845b50455893d931ee6a86e1a17276847764385",
                 "shasum": ""
             },
@@ -60,7 +59,7 @@
                 "sql",
                 "sqlite"
             ],
-            "time": "2016-07-07 17:58:29"
+            "time": "2016-07-07T17:58:29+00:00"
         },
         {
             "name": "doctrine/cache",
@@ -130,25 +129,25 @@
                 "cache",
                 "caching"
             ],
-            "time": "2015-11-02 18:33:51"
+            "time": "2015-11-02T18:33:51+00:00"
         },
         {
             "name": "katzgrau/klogger",
-            "version": "dev-master",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/katzgrau/KLogger.git",
-                "reference": "87735262be7c3bd210740b5cd4831dee3d827c46"
+                "reference": "a4ed373fa8a214aa4ae7aa4f221fe2c6ce862ef1"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://packagist.phpcomposer.com/files/katzgrau/KLogger/87735262be7c3bd210740b5cd4831dee3d827c46.zip",
-                "reference": "87735262be7c3bd210740b5cd4831dee3d827c46",
+                "url": "https://files.phpcomposer.com/files/katzgrau/KLogger/a4ed373fa8a214aa4ae7aa4f221fe2c6ce862ef1.zip",
+                "reference": "a4ed373fa8a214aa4ae7aa4f221fe2c6ce862ef1",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3",
-                "psr/log": "1.0.0"
+                "psr/log": "^1.0.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "4.0.*"
@@ -180,20 +179,20 @@
             "keywords": [
                 "logging"
             ],
-            "time": "2015-11-04 22:43:22"
+            "time": "2016-11-07T19:29:14+00:00"
         },
         {
             "name": "mikecao/flight",
-            "version": "dev-master",
+            "version": "v1.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mikecao/flight.git",
-                "reference": "ec24d786026de89bc4852d6f33de6b42fb0a5b98"
+                "reference": "e146b8c0ddbc6384c5a66f23dea71743fc282289"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/mikecao/flight/ec24d786026de89bc4852d6f33de6b42fb0a5b98.zip",
-                "reference": "ec24d786026de89bc4852d6f33de6b42fb0a5b98",
+                "url": "https://files.phpcomposer.com/files/mikecao/flight/e146b8c0ddbc6384c5a66f23dea71743fc282289.zip",
+                "reference": "e146b8c0ddbc6384c5a66f23dea71743fc282289",
                 "shasum": ""
             },
             "require": {
@@ -223,26 +222,34 @@
             ],
             "description": "Flight is a fast, simple, extensible framework for PHP. Flight enables you to quickly and easily build RESTful web applications.",
             "homepage": "http://flightphp.com",
-            "time": "2016-06-15 18:09:18"
+            "time": "2017-10-20T01:46:56+00:00"
         },
         {
             "name": "psr/log",
-            "version": "1.0.0",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/log.git",
-                "reference": "fe0936ee26643249e916849d48e3a51d5f5e278b"
+                "reference": "4ebe3a8bf773a19edfe0a84b6585ba3d401b724d"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://packagist.phpcomposer.com/files/php-fig/log/fe0936ee26643249e916849d48e3a51d5f5e278b.zip",
-                "reference": "fe0936ee26643249e916849d48e3a51d5f5e278b",
+                "url": "https://files.phpcomposer.com/files/php-fig/log/4ebe3a8bf773a19edfe0a84b6585ba3d401b724d.zip",
+                "reference": "4ebe3a8bf773a19edfe0a84b6585ba3d401b724d",
                 "shasum": ""
             },
+            "require": {
+                "php": ">=5.3.0"
+            },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
             "autoload": {
-                "psr-0": {
-                    "Psr\\Log\\": ""
+                "psr-4": {
+                    "Psr\\Log\\": "Psr/Log/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -256,12 +263,13 @@
                 }
             ],
             "description": "Common interface for logging libraries",
+            "homepage": "https://github.com/php-fig/log",
             "keywords": [
                 "log",
                 "psr",
                 "psr-3"
             ],
-            "time": "2012-12-21 11:40:51"
+            "time": "2016-10-10T12:19:37+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -307,17 +315,13 @@
                 "env",
                 "environment"
             ],
-            "time": "2015-05-30 16:15:01"
+            "time": "2015-05-30T16:15:01+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "mikecao/flight": 20,
-        "catfan/medoo": 20,
-        "katzgrau/klogger": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
