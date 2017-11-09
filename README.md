@@ -60,7 +60,7 @@ Please import `sql\tinyme.sql` to your local MySQL database, then modify `.env` 
 #### Request Example
 
 ```bash
-curl http://127.0.0.1:9999/api/login --data "email=foo@example.com&password=123456" --compressed
+curl -X POST http://127.0.0.1:9999/api/login --data "email=foo@example.com&password=123456"
 ```
 
 #### Response Example
