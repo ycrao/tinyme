@@ -19,7 +19,7 @@ class PageModel extends Model
      */
     public function getPageById($id)
     {
-        return $this->_db->get($this->_table, ['id', 'content', 'created_at', 'updated_at'], [
+        return $this->_db->get($this->_table, ['id', 'uid', 'content', 'created_at', 'updated_at'], [
             'id' => $id
         ]);
     }
@@ -48,14 +48,14 @@ class PageModel extends Model
         if ($current_page <= 0) {
             $current_page = 1;
         }
-        $next_page_url = ($total >= $current_page) ? '/api/pages/?page='.($current_page + 1).'&per_page='.$per_page : null;
-        $prev_page_url = ($current_page == 1 || $total == 0) ? null : '/api/pages/?page='.($current_page - 1).'&per_page='.$per_page;
+        $next_page_url = ($total > $current_page) ? '/api/pages/?page='.($current_page + 1).'&per_page='.$per_page : null;
+        $prev_page_url = ($current_page == 1 || $total == 0 || $current_page > $total) ? null : '/api/pages/?page='.($current_page - 1).'&per_page='.$per_page;
         $data = $this->_db->select($this->_table, ['id', 'content', 'created_at', 'updated_at'], [
             'uid'   => $uid,
             'ORDER' => [
                 'id' => 'DESC',
             ],
-            'LIMIT' => [10*($current_page - 1), $per_page],
+            'LIMIT' => [($per_page)*($current_page - 1), $per_page],
         ]);
         $from = $to = null;
         if ($data) {
@@ -110,8 +110,10 @@ class PageModel extends Model
             'content'    => $content,
             'updated_at' => $now,
         ], [
-            'id'  => $id,
-            'uid' => $uid,
+            'AND' => [
+                'id'  => $id,
+                'uid' => $uid,
+            ]
         ]);
     }
 

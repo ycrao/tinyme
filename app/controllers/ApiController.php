@@ -8,10 +8,10 @@ class ApiController
 {
 
     /**
-     * api response
+     * api response (normal success)
      * 
      * @param  array   $data
-     * @param  integer $code When success using 200, fail or error using non-2xx digital
+     * @param  integer $code Using 200 when success
      * @param  string  $msg
      * @return Flight\response json
      */
@@ -22,10 +22,10 @@ class ApiController
     }
 
     /**
-     * api response (using non-2xx in fail or error case)
+     * api response (fail or error)
      * 
      * @param  string  $msg
-     * @param  integer $code
+     * @param  integer $code Using non-2xx in fail or error case
      * @param  array   $data
      * @return Flight\response json
      */
@@ -123,7 +123,13 @@ class ApiController
             $uid = self::_auth();
             $content = Flight::request()->data['content'];
             if (empty(trim($content))) {
-                return self::_error('missing params or empty content!');
+                // try to get POST raw data
+                $body = json_decode(Flight::request()->getBody(), true);
+                if (isset($body['content']) && !empty($body['content'])) {
+                    $content = $body['content'];
+                } else {
+                    return self::_error('missing params or empty content!');
+                }
             }
             $page_id = Flight::model('Page')->createPage($uid, $content);
             if ($page_id) {
@@ -152,7 +158,7 @@ class ApiController
             $page = Flight::model('Page')->getPageById($id);
             if ($page) {
                 if ($page['uid'] == $uid) {
-                    return self::api($page);
+                    return self::_api($page);
                 } else {
                     return self::_error('forbidden, you have no right to view this page!', 403);
                 }
@@ -177,15 +183,22 @@ class ApiController
         try {
             $id = (int) $id;
             $uid = self::_auth();
-            $page = Flight::request()->getPageById($id);
+            $page = Flight::model('Page')->getPageById($id);
             if ($page) {
                 if ($page['uid'] == $uid) {
-                    $content = Flight::request()->data('content');
+                    // hijack PUT method by passing `_method=put` parameter with POST
+                    $content = Flight::request()->data['content'];
                     if (empty(trim($content))) {
-                        return self::_error('missing params or empty content!');
+                        // try to get PUT raw data
+                        $body = json_decode(Flight::request()->getBody(), true);
+                        if (isset($body['content']) && !empty($body['content'])) {
+                            $content = $body['content'];
+                        } else {
+                            return self::_error('missing params or empty content!');
+                        }
                     }
                     Flight::model('Page')->updatePage($id, $content, $uid);
-                    return self::api(['result' => 'update success!']);
+                    return self::_api(['result' => 'update success!']);
                 } else {
                     return self::_error('forbidden, you have no right to update this page!', 403);
                 }
@@ -215,7 +228,7 @@ class ApiController
             if ($page) {
                 if ($page['uid'] == $uid) {
                     Flight::model('Page')->deletePage($uid, $id);
-                    return self::api(['result' => 'delete success!']);
+                    return self::_api(['result' => 'delete success!']);
                 } else {
                     return self::_error('forbidden, you have no right to delete this page!', 403);
                 }
