@@ -28,9 +28,212 @@ php -S 127.0.0.1:9999 -t public
 ```
 You can view this project page by typing `http://127.0.0.1:9999` url in your browser.
 
-## Documentation
+## API Service
 
-`TinyMe` using third-party components, you can get help from their offical website.
+Please import `sql\tinyme.sql` to your local MySQL database, then modify `.env` file configuration. 
+
+### Route
+
+| Method   | Route or URI    | Note                                    |
+| :------- | :-------------- | :-------------------------------------- |
+| `post`   | `/api/login`    | Get access-token by login account.      |
+| `get`    | `/api/pages`    | Get current user pages with pagination. |
+| `post`   | `/api/page`     | Create a new page.                      |
+| `get`    | `/api/page/@id` | Get page by specified id.               |
+| `put`    | `/api/page/@id` | Update page by specified id.            |
+| `delete` | `/api/page/@id` | Delete page by specified id.            |
+
+### API error code
+
+| Code               | Note                              |
+| :----------------- | :-------------------------------- |
+| 500                | fail or error.                    |
+| 401 (Unauthorized) | access token already expired.     |
+| 403 (Forbidden)    | illegal or incorrect credentials. |
+| 404 (Not Found)    | api or route not existed.         |
+| 200 (OK)           | success.                          |
+
+### post `api/login`
+
+>   Using email and password to login and get access token. Please recall login api when token is expired, do not call this api frequently when old token(s) not expired.
+
+#### Request Example
+
+```bash
+curl -X POST http://127.0.0.1:9999/api/login --data "email=foo@example.com&password=123456"
+```
+
+#### Response Example
+
+Using `200` as `code` when success.
+
+```json
+{
+    "code": 200,
+    "msg": "OK",
+    "data": {
+        "uid": "1",
+        "token": "TVC66rtXnv7pw3jge4EtyC7qtyKKPxjjGyVUi4K2D",
+        "expire_at": 1510233022
+    }
+}
+```
+
+Using non-2xx (`403` 、`500` etc) digital when fail or error.
+
+```json
+{
+    "code": 403,
+    "msg": "illegal or incorrect credentials",
+    "data": []
+}
+```
+
+### get `api/pages`
+
+>   Get current user pages with pagination.
+
+#### Request Example
+
+```
+curl http://127.0.0.1:9999/api/pages -H "AUTHORIZATION: Bearer TVC66rtXnv7pw3jge4EtyC7qtyKKPxjjGyVUi4K2D"
+
+# with page
+curl http://127.0.0.1:9999/api/pages?page=2&per_page=2 -H "AUTHORIZATION: Bearer TVC66rtXnv7pw3jge4EtyC7qtyKKPxjjGyVUi4K2D"
+```
+
+#### Response Example
+
+```json
+{
+    "code": 200,
+    "msg": "OK",
+    "data": {
+        "total": 2,
+        "per_page": 2,
+        "current_page": 2,
+        "next_page_url": "/api/pages/?page=3&per_page=2",
+        "prev_page_url": "/api/pages/?page=1&per_page=2",
+        "from": "1",
+        "to": "1",
+        "data": [
+            {
+                "id": "1",
+                "content": "# Hello world\n\nThis is a demo page.",
+                "created_at": "2017-11-09 13:54:39",
+                "updated_at": "2017-11-09 13:54:39"
+            }
+        ]
+    }
+}
+```
+
+### post `api/page`
+
+>   Create a new page.
+
+#### Request Example
+
+```bash
+# POST raw data (in `json` format)
+curl -X POST http://127.0.0.1:9999/api/page --data '{"content":"# Hello world\n\nThis is another demo page."}' -H "AUTHORIZATION: Bearer TVC66rtXnv7pw3jge4EtyC7qtyKKPxjjGyVUi4K2D"
+
+# POST data (in form string)
+curl -X POST http://127.0.0.1:9999/api/page --data "content=# Hello world\n\nThis is another demo page." -H "AUTHORIZATION: Bearer TVC66rtXnv7pw3jge4EtyC7qtyKKPxjjGyVUi4K2D"
+```
+
+#### Response Example
+
+```json
+{
+    "code":200,
+    "msg":"OK",
+    "data":{
+        "result":"create success!",
+        "view_url":"/api/page/4"
+    }
+}
+```
+
+### get `api/page/@id`
+
+>   Get page by specified id.
+
+#### Request Example
+
+```bash
+curl http://127.0.0.1:9999/api/page/4 -H "AUTHORIZATION: Bearer TVC66rtXnv7pw3jge4EtyC7qtyKKPxjjGyVUi4K2D"
+```
+
+#### Response Example
+
+```json
+{
+    "code":200,
+    "msg":"OK",
+    "data":{
+        "id":"4",
+        "uid":"1",
+        "content":"# Hello world\n\nThis is another demo page.",
+        "created_at":"2017-11-09 20:36:52",
+        "updated_at":"2017-11-09 20:36:52"
+    }
+}
+```
+
+### put `api/page/@id`
+
+>   Update page by specified id.
+
+#### Request Example
+
+```bash
+# PUT raw data (in `json` format)
+curl -X PUT http://127.0.0.1:9999/api/page/4 --data '{"content":"# Demo\n\nThis is another demo page."}' -H "AUTHORIZATION: Bearer TVC66rtXnv7pw3jge4EtyC7qtyKKPxjjGyVUi4K2D"
+
+# hijack PUT method by passing `_method=put` parameter with POST
+curl -X POST http://127.0.0.1:9999/api/page/4 --data "_method=put&content=# Demo\n\nThis is another demo page." -H "AUTHORIZATION: Bearer TVC66rtXnv7pw3jge4EtyC7qtyKKPxjjGyVUi4K2D"
+```
+
+#### Response Example
+
+```json
+{
+    "code":200,
+    "msg":"OK",
+    "data":{
+        "result":"update success!"
+    }
+}
+```
+
+### delete `/api/page/@id`
+
+>   Delete page by specified id.
+
+#### Request Example
+
+```bash
+# DELETE
+curl -X DELETE http://127.0.0.1:9999/api/page/4 -H "AUTHORIZATION: Bearer TVC66rtXnv7pw3jge4EtyC7qtyKKPxjjGyVUi4K2D"
+
+# hijack DELETE method by passing `_method=delete` parameter with POST
+curl -X POST http://127.0.0.1:9999/api/page/4 --data "_method=delete" -H "AUTHORIZATION: Bearer TVC66rtXnv7pw3jge4EtyC7qtyKKPxjjGyVUi4K2D"
+```
+
+#### Response Example
+
+```json
+{
+    "code":200,
+    "msg":"OK",
+    "data":{
+        "result":"delete success!"
+    }
+}
+```
+
+## Documentation
 
 ### Kernel
 

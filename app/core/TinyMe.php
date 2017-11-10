@@ -165,7 +165,7 @@ class TinyMe
         $class = '\\'.trim(str_replace('/', '\\', $name), '\\').'Model';
         if (!isset(self::$_model[$name])) {
             $instance = new $class();
-            if($initDb) {
+            if ($initDb) {
                 $instance->setDb(self::db());
             }
             self::$_model[$name] = $instance;
