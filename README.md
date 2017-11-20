@@ -36,7 +36,7 @@ Please import `sql\tinyme.sql` to your local MySQL database, then modify `.env` 
 
 | Method   | Route or URI    | Note                                    |
 | :------- | :-------------- | :-------------------------------------- |
-| `post`   | `/api/login`    | Get access-token by login account.      |
+| `post`   | `/api/login`    | Get access-token by logining account.   |
 | `get`    | `/api/pages`    | Get current user pages with pagination. |
 | `post`   | `/api/page`     | Create a new page.                      |
 | `get`    | `/api/page/@id` | Get page by specified id.               |
