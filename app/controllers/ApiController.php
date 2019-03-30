@@ -9,7 +9,7 @@ class ApiController
 
     /**
      * api response (normal success)
-     * 
+     *
      * @param  array   $data
      * @param  integer $code Using 200 when success
      * @param  string  $msg
@@ -23,7 +23,7 @@ class ApiController
 
     /**
      * api response (fail or error)
-     * 
+     *
      * @param  string  $msg
      * @param  integer $code Using non-2xx in fail or error case
      * @param  array   $data
@@ -39,7 +39,7 @@ class ApiController
 
     /**
      * authorize token
-     * 
+     *
      * @return \AppException|int If success will return current user id
      */
     private static function _auth()
@@ -62,9 +62,9 @@ class ApiController
 
     /**
      * login
-     * 
+     *
      * Please recall login api when token is expired, do not call this api frequently when old token(s) not expired
-     * 
+     *
      * @return Flight\response json
      */
     public static function login()

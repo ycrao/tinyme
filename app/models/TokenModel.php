@@ -32,18 +32,20 @@ class TokenModel extends Model
      * @param  int $uid
      * @param  string $token
      * @param  int $expire_at
-     * @return int 
+     * @return int Returns token id
      */
     public function insertToken($uid, $token, $expire_at)
     {
         $now = date('Y-m-d H:i:s');
-        return $this->_db->insert($this->_table, [
+        // medoo 1.6.x Return: [PDOStatement] The PDOStatement object
+        $data = $this->_db->insert($this->_table, [
             'uid'        => $uid,
             'token'      => $token,
             'expire_at'  => $expire_at,
             'created_at' => $now,
             'updated_at' => $now,
         ]);
+        return $this->_db->id();
     }
 
 

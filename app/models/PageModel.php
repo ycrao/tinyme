@@ -15,7 +15,7 @@ class PageModel extends Model
      * getPageById
      * 
      * @param  int $id
-     * @return array
+     * @return array Returns result
      */
     public function getPageById($id)
     {
@@ -30,7 +30,7 @@ class PageModel extends Model
      * @param  int  $uid
      * @param  integer $per_page
      * @param  integer $page
-     * @return array
+     * @return array Returns result
      */
     public function getUserPages($uid, $per_page = 10, $page = 1)
     {
@@ -83,17 +83,19 @@ class PageModel extends Model
      *
      * @param  int $uid
      * @param  string $content
-     * @return int
+     * @return int Returns page id
      */
     public function createPage($uid, $content)
     {
         $now = date('Y-m-d H:i:s');
-        return $this->_db->insert($this->_table, [
+        // medoo 1.6.x Return: [PDOStatement] The PDOStatement object
+        $data = $this->_db->insert($this->_table, [
             'uid'        => $uid,
             'content'    => $content,
             'created_at' => $now,
             'updated_at' => $now,
         ]);
+        return $this->_db->id();
     }
 
     /**
@@ -101,12 +103,13 @@ class PageModel extends Model
      *
      * @param  int $uid
      * @param  string $content
-     * @return int
+     * @return int Returns the number of rows affected by the last SQL statement
      */
     public function updatePage($id, $content, $uid)
     {
         $now = date('Y-m-d H:i:s');
-        return $this->_db->update($this->_table, [
+        // medoo 1.6.x Return: [PDOStatement] The PDOStatement object
+        $data = $this->_db->update($this->_table, [
             'content'    => $content,
             'updated_at' => $now,
         ], [
@@ -115,6 +118,7 @@ class PageModel extends Model
                 'uid' => $uid,
             ]
         ]);
+        return $data->rowCount();
     }
 
     /**
@@ -122,15 +126,17 @@ class PageModel extends Model
      *
      * @param  int $uid
      * @param  int $id
-     * @return int
+     * @return int Returns the number of rows affected by the last SQL statement
      */
     public function deletePage($uid, $id)
     {
-        return $this->_db->delete($this->_table, [
+        // medoo 1.6.x Return: [PDOStatement] The PDOStatement object
+        $data = $this->_db->delete($this->_table, [
             'AND' => [
                 'uid' => $uid,
                 'id'  => $id
             ]
         ]);
+        return $data->rowCount();
     }
 }

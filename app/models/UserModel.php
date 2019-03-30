@@ -17,7 +17,7 @@ class UserModel extends Model
      * getUserById
      * 
      * @param  int $id 
-     * @return array
+     * @return array Returns result
      */
     public function getUserById($id)
     {
@@ -31,7 +31,7 @@ class UserModel extends Model
      * 
      * @param  string $email email
      * @param  string $password password
-     * @return bool
+     * @return int Passed return user id, else return zero (0)
      */
     public function loginByCredentials($email, $password)
     {
