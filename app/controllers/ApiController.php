@@ -235,8 +235,6 @@ class ApiController
             } else {
                 return self::_error('page not found!', 404);
             }
-            $pages = Flight::model('Page')->getUserPages($uid, $per_page, $page);
-            return self::_api($pages);
         } catch (\AppException $e) {
             return self::_error($e->getMessage(), $e->getCode());
         } catch (\Exception $e) {
