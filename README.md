@@ -7,8 +7,7 @@
 
 >   A tiny php framework based on flight and medoo.
 
-[IntroductionPage](https://raoyc.com/tinyme/index.html)
-[简体中文读我](README_zh-CN.md)
+[IntroductionPage](https://raoyc.com/tinyme/index.html) | [简体中文读我](README_zh-CN.md)
 
 ## Installation
 
