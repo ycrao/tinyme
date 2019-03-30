@@ -2,6 +2,7 @@
 
 use Katzgrau\KLogger\Logger;
 use Psr\Log\LogLevel;
+use Medoo\Medoo;
 
 
 /**
@@ -140,7 +141,7 @@ class TinyMe
                 $db_charset = isset($db['charset']) ? $db['charset'] : 'utf8';
             }
 
-            $db = new medoo([
+            $db = new Medoo([
                 'database_type' => 'mysql',
                 'database_name' => $db_name,
                 'server'        => $db_host,
@@ -160,7 +161,7 @@ class TinyMe
      * getModel
      * get model by name.
      */
-    public static function getModel($name, $initDb = true) 
+    public static function getModel($name, $initDb = true)
     {
         $class = '\\'.trim(str_replace('/', '\\', $name), '\\').'Model';
         if (!isset(self::$_model[$name])) {
@@ -179,7 +180,7 @@ class TinyMe
      * based on `doctrine/cache` , official website : http://docs.doctrine-project.org/en/latest/reference/caching.html , https://github.com/doctrine/cache .
      * using file cache here.
      */
-    public static function cache($path = 'data') 
+    public static function cache($path = 'data')
     {
         $path = Flight::get('cache.path').'/'.$path;
         if (!is_dir($path)) {
@@ -197,7 +198,7 @@ class TinyMe
      * getController
      * get controller by name.
      */
-    public static function getController($name) 
+    public static function getController($name)
     {
         $class = '\\'.trim(str_replace('/', '\\', $name), '\\').'Controller';
         if (!isset(self::$_controller[$class])) {

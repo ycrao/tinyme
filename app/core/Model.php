@@ -1,5 +1,7 @@
 <?php
 
+use Medoo\Medoo;
+
 /**
  * TinyMe Model class
  * based on `catfan/medoo` , official website: https://github.com/catfan/medoo .
@@ -16,7 +18,7 @@ class Model
         return $this->_error;
     }
 
-    public function setDb(medoo $db) {
+    public function setDb(Medoo $db) {
         $this->_db = $db;
     }
 }
