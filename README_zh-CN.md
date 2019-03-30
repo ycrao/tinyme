@@ -7,6 +7,7 @@
 
 >   基于 `flight` 与 `medoo` 构建的微型php框架。
 
+[宣传页面](https://raoyc.com/tinyme/index.html)
 [English readme](README.md)
 
 ## 安装
