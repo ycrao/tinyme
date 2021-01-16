@@ -283,7 +283,3 @@ Flight::db()->get('tm_page', '*', [
 ## 授权协议
 
 `TinyMe` 是以 [MIT 授权协议](http://opensource.org/licenses/MIT) 发布的开源软件。
-
-## QQ Group （官方QQ群）
-
-如果你懂中文，欢迎加入官方QQ群：[260655062](http://shang.qq.com/wpa/qunwpa?idkey=c43a551e4bc0ff5c5051ec8f6d901ab21c1e89e3001d6cf0b0b4a28c0fa4d4f8) 。
