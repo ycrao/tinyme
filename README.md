@@ -280,7 +280,3 @@ based on `catfan/medoo` , official website : https://github.com/catfan/medoo , h
 ## License
 
 The TinyMe framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
-
-## QQ Group （官方QQ群）
-
-如果你懂中文，欢迎加入官方QQ群：[260655062](http://shang.qq.com/wpa/qunwpa?idkey=c43a551e4bc0ff5c5051ec8f6d901ab21c1e89e3001d6cf0b0b4a28c0fa4d4f8) 。
