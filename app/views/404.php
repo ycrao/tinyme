@@ -1,60 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="TinyMe - A tiny php framework based on flight and medoo.">
-    <meta name="author" content="https://raoyc.com">
-
-    <title>404 Not Found ! - TinyMe</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="/static/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-
-    <!-- Theme CSS -->
-    <link href="/static/css/grayscale.min.css" rel="stylesheet">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
+    <title>404 Not Found - TinyMe</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .page {
+            text-align: center;
+            padding: 24px;
+        }
+        .code {
+            font-size: 64px;
+            letter-spacing: 6px;
+            margin-bottom: 12px;
+        }
+        .title {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+        .message {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 24px;
+        }
+        a {
+            color: #007acc;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
-
 <body>
-    <section id="error_404" class="container content-section text-center">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2">
-                <h2>404 Not Found !</h2>
-                <p>You can back to the <a href="/">Home</a> .</p>
-            </div>
+    <div class="page">
+        <div class="code">404</div>
+        <div class="title">Page not found</div>
+        <div class="message">The page you are looking for may have been removed, renamed, or is temporarily unavailable.</div>
+        <div>
+            <a href="/">Back to home</a>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container text-center">
-            <p>Template from <a href="https://startbootstrap.com/template-overviews/grayscale/">Start Bootstrap</a>.</p>
-            <p>Copyright &copy; <a href="https://github.com/ycrao">ycrao</a> 2016 - <?echo date('Y')?></p>
-        </div>
-    </footer>
-
-    <!-- jQuery -->
-    <script src="/static/vendor/jquery/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="/static/vendor/bootstrap/js/bootstrap.min.js"></script>
-
+    </div>
 </body>
-
 </html>
