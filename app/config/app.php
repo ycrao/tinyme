@@ -17,7 +17,7 @@ return [
         'user'    => env('DB_USERNAME', 'root'),
         'pass'    => env('DB_PASSWORD', 'root'),
         'name'    => env('DB_DATABASE', 'tinyme'),
-        'charset' => 'utf8',
+        'charset' => 'utf8mb4',
     ],
 
     'cache.path' => dirname(__DIR__).'/storage/cache',

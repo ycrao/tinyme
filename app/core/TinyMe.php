@@ -35,7 +35,7 @@ class TinyMe
         date_default_timezone_set($timezone);
 
         //filters
-        if (get_magic_quotes_gpc()) {
+        if (function_exists('get_magic_quotes_gpc') && get_magic_quotes_gpc()) {
             $_GET = self::stripslashesDeep($_GET);
             $_POST = self::stripslashesDeep($_POST);
             $_COOKIE = self::stripslashesDeep($_COOKIE);
