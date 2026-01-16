@@ -1,6 +1,6 @@
 {
   "name": "ycrao/tinyme",
-  "description": "a tiny php framework based on flight and medoo.",
+  "description": "A tiny PHP framework based on FlightPHP and Medoo.",
   "homepage": "https://github.com/ycrao/tinyme",
   "type": "project",
   "license": "MIT",
