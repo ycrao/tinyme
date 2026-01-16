@@ -62,8 +62,8 @@
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>About TinyMe</h2>
                 <p>A tiny php framework based on flight and medoo. <code>TinyMe</code> using third-party components, you can get help from their offical website. </p>
-                <p>Its kernel based on <code>mikecao/flight</code> , official website : <a href="http://flightphp.com/">http://flightphp.com/</a> , <a href="https://github.com/mikecao/flight">https://github.com/mikecao/flight</a> .</p>
-                <p>DB based on <code>catfan/medoo</code> , official website : <a href="https://github.com/catfan/medoo">https://github.com/catfan/medoo</a> , <a href="http://medoo.in/doc">http://medoo.in/doc</a> .</p>
+                <p>Its kernel based on <code>mikecao/flight</code> , official website : <a href="https://flightphp.com/">https://flightphp.com/</a> , <a href="https://github.com/mikecao/flight">https://github.com/mikecao/flight</a> .</p>
+                <p>DB based on <code>catfan/medoo</code> , official website : <a href="https://github.com/catfan/medoo">https://github.com/catfan/medoo</a> , <a href="https://medoo.in/doc">https://medoo.in/doc</a> .</p>
             </div>
         </div>
     </section>
@@ -90,9 +90,6 @@
                 <p><a href="mailto:raoyc2009@gmail.com">raoyc2009@gmail.com</a>
                 </p>
                 <ul class="list-inline banner-social-buttons">
-                    <li>
-                        <a href="https://twitter.com/raoyc" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
-                    </li>
                     <li>
                         <a href="https://github.com/ycrao/tinyme" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
                     </li>

@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="TinyMe - A tiny php framework based on flight and medoo.">
-    <meta name="author" content="http://raoyc.com">
+    <meta name="author" content="https://raoyc.com">
 
     <title>404 Not Found ! - TinyMe</title>
 
@@ -45,7 +45,7 @@
     <footer>
         <div class="container text-center">
             <p>Template from <a href="https://startbootstrap.com/template-overviews/grayscale/">Start Bootstrap</a>.</p>
-            <p>Copyright &copy; <a href="http://yas.so">YʌS Network</a> 2016</p>
+            <p>Copyright &copy; <a href="https://github.com/ycrao">ycrao</a> 2016 - <?echo date('Y')?></p>
         </div>
     </footer>
 

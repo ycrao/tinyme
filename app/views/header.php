@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="TinyMe - A tiny php framework based on flight and medoo.">
-    <meta name="author" content="http://raoyc.com">
+    <meta name="author" content="https://raoyc.com">
 
     <title>TinyMe - A tiny php framework based on flight and medoo.</title>
 
