@@ -16,7 +16,7 @@ class Helper {
      */
     public static function env(string $name, ?string $default = null): ?string
     {
-        return getenv($name) ? : $default;
+        return $_ENV[$name] ? : $default;
     }
 
     /**

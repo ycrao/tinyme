@@ -8,8 +8,11 @@ use Medoo\Medoo;
 use flight\Cache;
 use app\utils\Helper;
 
+// Refer to this constant to get the project root directory
+define('PROJECT_ROOT', __DIR__ . '/../..');
+
 // Load environment variables
-$dotenv = Dotenv::createImmutable(__DIR__ . '/../../');
+$dotenv = Dotenv::createImmutable(PROJECT_ROOT);
 $dotenv->load();
 
 // Set timezone
@@ -35,10 +38,6 @@ if (function_exists('setlocale') === true) {
 if (empty($app) === true) {
 	$app = Flight::app();
 }
-
-
-// Refer to this constant to get the project root directory
-define('PROJECT_ROOT', __DIR__ . '/../..');
 
 // This autoloads your code in the app directory so you don't have to require_once everything
 // You'll need to namespace your classes with "app\folder\" to include them properly
