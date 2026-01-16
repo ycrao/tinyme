@@ -5,7 +5,7 @@
 [![License](https://poser.pugx.org/ycrao/tinyme/license?format=flat-square)](https://packagist.org/packages/ycrao/tinyme)
 [![Total Downloads](https://poser.pugx.org/ycrao/tinyme/downloads?format=flat-square)](https://packagist.org/packages/ycrao/tinyme)
 
->   A tiny php framework based on flight and medoo.
+>   A tiny PHP framework based on FlightPHP and Medoo.
 
 [IntroductionPage](https://raoyc.com/tinyme/index.html) | [简体中文读我](README_zh-CN.md)
 
