@@ -1,11 +1,11 @@
-# TinyMe
+# TinyMe V2
 
 [![Latest Stable Version](https://poser.pugx.org/ycrao/tinyme/v/stable.svg?format=flat-square)](https://packagist.org/packages/ycrao/tinyme)
 [![Latest Unstable Version](https://poser.pugx.org/ycrao/tinyme/v/unstable.svg?format=flat-square)](https://packagist.org/packages/ycrao/tinyme)
 [![License](https://poser.pugx.org/ycrao/tinyme/license?format=flat-square)](https://packagist.org/packages/ycrao/tinyme)
 [![Total Downloads](https://poser.pugx.org/ycrao/tinyme/downloads?format=flat-square)](https://packagist.org/packages/ycrao/tinyme)
 
->   A tiny php framework based on flight and medoo.
+>   A tiny PHP framework based on FlightPHP and Medoo.
 
 [IntroductionPage](https://raoyc.com/tinyme/index.html) | [简体中文读我](README_zh-CN.md)
 
@@ -14,9 +14,9 @@
 Just like `Laravel` installation, set `public` directory as server root path in `vhost.conf` and using `composer` to install or update packages and so on. You can do these in your terminal like below:
 
 ```bash
-//using git
+# using git
 git clone https://github.com/ycrao/tinyme.git tinyme
-//or using composer, but skip `composer install` command below
+# or using composer, but skip `composer install` command below
 composer create-project --prefer-dist ycrao/tinyme tinyme
 cd tinyme
 cp .env.example .env
@@ -25,6 +25,8 @@ composer install
 cd app
 chmod -R 755 storage
 php -S 127.0.0.1:9999 -t public
+# or using composer
+composer start
 ```
 You can view this project page by typing `http://127.0.0.1:9999` url in your browser.
 
@@ -60,7 +62,13 @@ Please import `sql\tinyme.sql` to your local MySQL database, then modify `.env` 
 #### Request Example
 
 ```bash
-curl -X POST http://127.0.0.1:9999/api/login --data "email=foo@example.com&password=123456"
+curl --request POST \
+  --url http://127.0.0.1:9999/api/login \
+  --header 'Content-Type: application/json' \
+  --data '{
+  "email": "foo@example.com",
+  "password": "123456"
+}'
 ```
 
 #### Response Example
@@ -69,23 +77,23 @@ Using `200` as `code` when success.
 
 ```json
 {
-    "code": 200,
-    "msg": "OK",
-    "data": {
-        "uid": "1",
-        "token": "TVC66rtXnv7pw3jge4EtyC7qtyKKPxjjGyVUi4K2D",
-        "expire_at": 1510233022
-    }
+  "code": 200,
+  "msg": "ok",
+  "data": {
+    "uid": 1,
+    "token": "hdtvEsu3FNEsyR069XNeTCzKSUFyWzAgSe7GcCjy",
+    "expire_at": 1768590265
+  }
 }
 ```
 
-Using non-2xx (`403` 、`500` etc) digital when fail or error.
+Using non-2xx (`403` 、`500` etc.) digital when fail or error.
 
 ```json
 {
-    "code": 403,
-    "msg": "illegal or incorrect credentials",
-    "data": []
+  "code": 403,
+  "msg": "illegal or incorrect credentials",
+  "data": null
 }
 ```
 
@@ -96,35 +104,34 @@ Using non-2xx (`403` 、`500` etc) digital when fail or error.
 #### Request Example
 
 ```
-curl http://127.0.0.1:9999/api/pages -H "AUTHORIZATION: Bearer TVC66rtXnv7pw3jge4EtyC7qtyKKPxjjGyVUi4K2D"
-
-# with page
-curl http://127.0.0.1:9999/api/pages?page=2&per_page=2 -H "AUTHORIZATION: Bearer TVC66rtXnv7pw3jge4EtyC7qtyKKPxjjGyVUi4K2D"
+curl --request GET \
+  --url http://127.0.0.1:9999/api/pages?page=1&per_page=2 \
+  --header 'Authorization: Bearer hdtvEsu3FNEsyR069XNeTCzKSUFyWzAgSe7GcCjy'
 ```
 
 #### Response Example
 
 ```json
 {
-    "code": 200,
-    "msg": "OK",
-    "data": {
-        "total": 2,
-        "per_page": 2,
-        "current_page": 2,
-        "next_page_url": "/api/pages/?page=3&per_page=2",
-        "prev_page_url": "/api/pages/?page=1&per_page=2",
-        "from": "1",
-        "to": "1",
-        "data": [
-            {
-                "id": "1",
-                "content": "# Hello world\n\nThis is a demo page.",
-                "created_at": "2017-11-09 13:54:39",
-                "updated_at": "2017-11-09 13:54:39"
-            }
-        ]
-    }
+  "code": 200,
+  "msg": "ok",
+  "data": {
+    "total": 1,
+    "per_page": 10,
+    "current_page": 1,
+    "next_page_url": null,
+    "prev_page_url": null,
+    "from": 1,
+    "to": 1,
+    "data": [
+      {
+        "id": 1,
+        "content": "# Hello world\n\nThis is a demo page.",
+        "created_at": "2017-11-09 13:54:39",
+        "updated_at": "2017-11-09 13:54:39"
+      }
+    ]
+  }
 }
 ```
 
@@ -135,23 +142,23 @@ curl http://127.0.0.1:9999/api/pages?page=2&per_page=2 -H "AUTHORIZATION: Bearer
 #### Request Example
 
 ```bash
-# POST raw data (in `json` format)
-curl -X POST http://127.0.0.1:9999/api/page --data '{"content":"# Hello world\n\nThis is another demo page."}' -H "AUTHORIZATION: Bearer TVC66rtXnv7pw3jge4EtyC7qtyKKPxjjGyVUi4K2D"
-
-# POST data (in form string)
-curl -X POST http://127.0.0.1:9999/api/page --data "content=# Hello world\n\nThis is another demo page." -H "AUTHORIZATION: Bearer TVC66rtXnv7pw3jge4EtyC7qtyKKPxjjGyVUi4K2D"
+curl --request POST \
+  --url http://127.0.0.1:9999/api/page \
+  --header 'Authorization: Bearer hdtvEsu3FNEsyR069XNeTCzKSUFyWzAgSe7GcCjy' \
+  --header 'Content-Type: application/json' \
+  --data '{"content":"# TinyMe \n\n>  A tiny PHP framework based on FlightPHP and Medoo."}'
 ```
 
 #### Response Example
 
 ```json
 {
-    "code":200,
-    "msg":"OK",
-    "data":{
-        "result":"create success!",
-        "view_url":"/api/page/4"
-    }
+  "code": 201,
+  "msg": "created!",
+  "data": {
+    "result": "create success!",
+    "view_url": "/api/page/2"
+  }
 }
 ```
 
@@ -162,22 +169,24 @@ curl -X POST http://127.0.0.1:9999/api/page --data "content=# Hello world\n\nThi
 #### Request Example
 
 ```bash
-curl http://127.0.0.1:9999/api/page/4 -H "AUTHORIZATION: Bearer TVC66rtXnv7pw3jge4EtyC7qtyKKPxjjGyVUi4K2D"
+curl --request GET \
+  --url http://127.0.0.1:9999/api/page/2 \
+  --header 'Authorization: Bearer hdtvEsu3FNEsyR069XNeTCzKSUFyWzAgSe7GcCjy'
 ```
 
 #### Response Example
 
 ```json
 {
-    "code":200,
-    "msg":"OK",
-    "data":{
-        "id":"4",
-        "uid":"1",
-        "content":"# Hello world\n\nThis is another demo page.",
-        "created_at":"2017-11-09 20:36:52",
-        "updated_at":"2017-11-09 20:36:52"
-    }
+  "code": 200,
+  "msg": "ok",
+  "data": {
+    "id": 2,
+    "uid": 1,
+    "content": "# TinyMe \n\n>  A tiny PHP framework based on FlightPHP and Medoo.",
+    "created_at": "2026-01-17 01:16:47",
+    "updated_at": "2026-01-17 01:16:47"
+  }
 }
 ```
 
@@ -188,22 +197,24 @@ curl http://127.0.0.1:9999/api/page/4 -H "AUTHORIZATION: Bearer TVC66rtXnv7pw3jg
 #### Request Example
 
 ```bash
-# PUT raw data (in `json` format)
-curl -X PUT http://127.0.0.1:9999/api/page/4 --data '{"content":"# Demo\n\nThis is another demo page."}' -H "AUTHORIZATION: Bearer TVC66rtXnv7pw3jge4EtyC7qtyKKPxjjGyVUi4K2D"
-
-# hijack PUT method by passing `_method=put` parameter with POST
-curl -X POST http://127.0.0.1:9999/api/page/4 --data "_method=put&content=# Demo\n\nThis is another demo page." -H "AUTHORIZATION: Bearer TVC66rtXnv7pw3jge4EtyC7qtyKKPxjjGyVUi4K2D"
+curl --request PUT \
+  --url http://127.0.0.1:9999/api/page/2 \
+  --header 'Authorization: Bearer hdtvEsu3FNEsyR069XNeTCzKSUFyWzAgSe7GcCjy' \
+  --header 'Content-Type: application/json' \
+  --data '{
+  "content": "# Flight \n\n>  Flight is a fast, simple, extensible framework for PHP. Flight enables you to quickly and easily build RESTful web applications."
+}'
 ```
 
 #### Response Example
 
 ```json
 {
-    "code":200,
-    "msg":"OK",
-    "data":{
-        "result":"update success!"
-    }
+  "code": 200,
+  "msg": "ok",
+  "data": {
+    "result": "update success!"
+  }
 }
 ```
 
@@ -214,22 +225,21 @@ curl -X POST http://127.0.0.1:9999/api/page/4 --data "_method=put&content=# Demo
 #### Request Example
 
 ```bash
-# DELETE
-curl -X DELETE http://127.0.0.1:9999/api/page/4 -H "AUTHORIZATION: Bearer TVC66rtXnv7pw3jge4EtyC7qtyKKPxjjGyVUi4K2D"
-
-# hijack DELETE method by passing `_method=delete` parameter with POST
-curl -X POST http://127.0.0.1:9999/api/page/4 --data "_method=delete" -H "AUTHORIZATION: Bearer TVC66rtXnv7pw3jge4EtyC7qtyKKPxjjGyVUi4K2D"
+curl --request DELETE \
+  --url http://127.0.0.1:9999/api/page/2 \
+  --header 'Authorization: Bearer hdtvEsu3FNEsyR069XNeTCzKSUFyWzAgSe7GcCjy' \
+  --header 'Content-Type: application/json'
 ```
 
 #### Response Example
 
 ```json
 {
-    "code":200,
-    "msg":"OK",
-    "data":{
-        "result":"delete success!"
-    }
+  "code": 200,
+  "msg": "ok",
+  "data": {
+    "result": "delete success!"
+  }
 }
 ```
 
@@ -237,45 +247,73 @@ curl -X POST http://127.0.0.1:9999/api/page/4 --data "_method=delete" -H "AUTHOR
 
 ### Kernel
 
-based on `mikecao/flight` , official website : http://flightphp.com/ , https://github.com/mikecao/flight .
-
+based on `flightphp/core` [repo](https://github.com/flightphp/core) , official website : https://flightphp.com/  .
 
 ### Cache
 
 ```php
-if (Flight::cache('data')->contains('foo')) {
-    $unit = Flight::cache('data')->fetch('foo');
-} else {
-    $bar = 'bar cache';
-    Flight::cache('data')->save('foo', $bar);
-}
+use flight\Cache;
+
+$app = Flight::app();
+// Register cache
+$app->register('cache', Cache::class, [__DIR__ . '/../storage/cache']);
+
+$app->cache()->set('hello', 'world', 60 * 60);
+$world = $app->cache()->get('hello');
 ```
 
-based on `doctrine/cache` , official website : http://docs.doctrine-project.org/en/latest/reference/caching.html , https://github.com/doctrine/cache .
+based on `flightphp/cache` [repo](https://github.com/flightphp/cache) , official website : https://docs.flightphp.com/en/v3/awesome-plugins/php-file-cache .
 
 ### Log
 
 ```php
-$logger = Flight::log()->debug('debug log');
+use Monolog\Logger;
+use Monolog\Level;
+use Monolog\Handler\StreamHandler;
+
+$app = Flight::app();
+// Register logger
+$app->register('logger', Logger::class, ['tinyme'], function($logger) {
+    $logPath = __DIR__ . '/../storage/logs/app.log';
+    $logger->pushHandler(new StreamHandler($logPath, Level::Debug));
+});
 ```
 
-based on `katzgrau/klogger` , official website : https://github.com/katzgrau/KLogger .
+based on `monolog/monolog` [repo](https://github.com/Seldaek/monolog) , official website : https://seldaek.github.io/monolog/ .
 
 
 ### Database and Model
 
 ```php
-Flight::model('Page')->getPageByID(1);
-Flight::db()->get('tm_page', '*', [
-            'id' => 1
-            ]);
+use Medoo\Medoo;
+use app\utils\Helper;
+
+$app = Flight::app();
+
+// Register database
+$app->register('db', Medoo::class, [
+    [
+        'type' => 'mysql',
+        'host' => Helper::env('DB_HOST', 'localhost'),
+        'port' => Helper::env('DB_PROT', 3306),
+        'database' => Helper::env('DB_DATABASE', 'tinyme'),
+        'username' => Helper::env('DB_USERNAME', 'root'),
+        'password' => Helper::env('DB_PASSWORD', 'root'),
+        'charset' => 'utf8mb4',
+        'collation' => 'utf8mb4_unicode_ci',
+    ]
+]);
+
+$page = $app->db()->get('tm_page', '*', [
+    'id' => 1
+]);
 ```
 
-based on `catfan/medoo` , official website : https://github.com/catfan/medoo , http://medoo.in/doc .
+based on `catfan/medoo` [repo](https://github.com/catfan/medoo) , official website : https://medoo.in/doc .
 
 ## Reference
 
-[flight-app-demo](https://github.com/xubodreamsky/flight-app-demo)
+- [flightphp/skeleton](https://github.com/flightphp/skeleton)
 
 ## License
 

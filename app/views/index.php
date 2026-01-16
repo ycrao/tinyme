@@ -63,14 +63,14 @@
 </head>
 <body>
     <div class="page">
-        <div class="logo">TinyMe</div>
-        <div class="tagline">A tiny PHP framework based on FlightPHP and Medoo.</div>
+        <div class="logo"><?php echo $name; ?></div>
+        <div class="tagline"><?php echo $desc; ?></div>
         <div class="links">
             <a class="btn primary" href="/">Get started</a>
             <a class="btn" href="https://github.com/ycrao/tinyme">View on GitHub</a>
         </div>
         <div class="meta">
-            PHP micro framework demo page
+            PHP micro framework demo page, current time: <?php echo date('Y-m-d H:i:s'); ?>
         </div>
     </div>
 </body>

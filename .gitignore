@@ -1,3 +1,9 @@
-/vendor
-/node_modules
+vendor/
 .env
+app/storage/logs/*.log
+app/storage/cache/*.php
+composer.lock
+.DS_Store
+.idea/
+.vscode/
+node_modules/

@@ -1,4 +1,4 @@
-# TinyMe
+# TinyMe V2
 
 [![Latest Stable Version](https://poser.pugx.org/ycrao/tinyme/v/stable.svg?format=flat-square)](https://packagist.org/packages/ycrao/tinyme)
 [![Latest Unstable Version](https://poser.pugx.org/ycrao/tinyme/v/unstable.svg?format=flat-square)](https://packagist.org/packages/ycrao/tinyme)
@@ -14,9 +14,9 @@
 类似于 `Laravel` 项目的安装，设置服务器网站根目录到 `public` 文件夹，并使用 `composer` 来安装或更新依赖包等等操作。您可以在终端窗口执行以下命令来完成：
 
 ```bash
-//使用 git
+# 使用 git
 git clone https://github.com/ycrao/tinyme.git tinyme
-//或者 使用 composer ，但请忽略执行下面 `composer install` 命令
+# 或者使用 composer，但请忽略执行下面 `composer install` 命令
 composer create-project --prefer-dist ycrao/tinyme tinyme
 cd tinyme
 cp .env.example .env
@@ -25,6 +25,8 @@ composer install
 cd app
 chmod -R 755 storage
 php -S 127.0.0.1:9999 -t public
+# 或者使用 composer
+composer start
 ```
 
 在浏览器中输入 `http://127.0.0.1:9999` 网址，您就可以看到本项目页面。
@@ -61,7 +63,13 @@ php -S 127.0.0.1:9999 -t public
 #### 请求示例
 
 ```bash
-curl -X POST http://127.0.0.1:9999/api/login --data "email=foo@example.com&password=123456"
+curl --request POST \
+  --url http://127.0.0.1:9999/api/login \
+  --header 'Content-Type: application/json' \
+  --data '{
+  "email": "foo@example.com",
+  "password": "123456"
+}'
 ```
 
 #### 响应示例
@@ -70,13 +78,13 @@ curl -X POST http://127.0.0.1:9999/api/login --data "email=foo@example.com&passw
 
 ```json
 {
-    "code": 200,
-    "msg": "OK",
-    "data": {
-        "uid": "1",
-        "token": "TVC66rtXnv7pw3jge4EtyC7qtyKKPxjjGyVUi4K2D",
-        "expire_at": 1510233022
-    }
+  "code": 200,
+  "msg": "ok",
+  "data": {
+    "uid": 1,
+    "token": "hdtvEsu3FNEsyR069XNeTCzKSUFyWzAgSe7GcCjy",
+    "expire_at": 1768590265
+  }
 }
 ```
 
@@ -84,9 +92,9 @@ curl -X POST http://127.0.0.1:9999/api/login --data "email=foo@example.com&passw
 
 ```json
 {
-    "code": 403,
-    "msg": "illegal or incorrect credentials",
-    "data": []
+  "code": 403,
+  "msg": "illegal or incorrect credentials",
+  "data": null
 }
 ```
 
@@ -97,35 +105,34 @@ curl -X POST http://127.0.0.1:9999/api/login --data "email=foo@example.com&passw
 #### 请求示例
 
 ```
-curl http://127.0.0.1:9999/api/pages -H "AUTHORIZATION: Bearer TVC66rtXnv7pw3jge4EtyC7qtyKKPxjjGyVUi4K2D"
-
-# with page
-curl http://127.0.0.1:9999/api/pages?page=2&per_page=2 -H "AUTHORIZATION: Bearer TVC66rtXnv7pw3jge4EtyC7qtyKKPxjjGyVUi4K2D"
+curl --request GET \
+  --url http://127.0.0.1:9999/api/pages?page=1&per_page=2 \
+  --header 'Authorization: Bearer hdtvEsu3FNEsyR069XNeTCzKSUFyWzAgSe7GcCjy'
 ```
 
 #### 响应示例
 
 ```json
 {
-    "code": 200,
-    "msg": "OK",
-    "data": {
-        "total": 2,
-        "per_page": 2,
-        "current_page": 2,
-        "next_page_url": "/api/pages/?page=3&per_page=2",
-        "prev_page_url": "/api/pages/?page=1&per_page=2",
-        "from": "1",
-        "to": "1",
-        "data": [
-            {
-                "id": "1",
-                "content": "# Hello world\n\nThis is a demo page.",
-                "created_at": "2017-11-09 13:54:39",
-                "updated_at": "2017-11-09 13:54:39"
-            }
-        ]
-    }
+  "code": 200,
+  "msg": "ok",
+  "data": {
+    "total": 1,
+    "per_page": 10,
+    "current_page": 1,
+    "next_page_url": null,
+    "prev_page_url": null,
+    "from": 1,
+    "to": 1,
+    "data": [
+      {
+        "id": 1,
+        "content": "# Hello world\n\nThis is a demo page.",
+        "created_at": "2017-11-09 13:54:39",
+        "updated_at": "2017-11-09 13:54:39"
+      }
+    ]
+  }
 }
 ```
 
@@ -136,23 +143,23 @@ curl http://127.0.0.1:9999/api/pages?page=2&per_page=2 -H "AUTHORIZATION: Bearer
 #### 请求示例
 
 ```bash
-# POST raw data (in `json` format)
-curl -X POST http://127.0.0.1:9999/api/page --data '{"content":"# Hello world\n\nThis is another demo page."}' -H "AUTHORIZATION: Bearer TVC66rtXnv7pw3jge4EtyC7qtyKKPxjjGyVUi4K2D"
-
-# POST data (in form string)
-curl -X POST http://127.0.0.1:9999/api/page --data "content=# Hello world\n\nThis is another demo page." -H "AUTHORIZATION: Bearer TVC66rtXnv7pw3jge4EtyC7qtyKKPxjjGyVUi4K2D"
+curl --request POST \
+  --url http://127.0.0.1:9999/api/page \
+  --header 'Authorization: Bearer hdtvEsu3FNEsyR069XNeTCzKSUFyWzAgSe7GcCjy' \
+  --header 'Content-Type: application/json' \
+  --data '{"content":"# TinyMe \n\n>  A tiny PHP framework based on FlightPHP and Medoo."}'
 ```
 
 #### 响应示例
 
 ```json
 {
-    "code":200,
-    "msg":"OK",
-    "data":{
-        "result":"create success!",
-        "view_url":"/api/page/4"
-    }
+  "code": 201,
+  "msg": "created!",
+  "data": {
+    "result": "create success!",
+    "view_url": "/api/page/2"
+  }
 }
 ```
 
@@ -163,22 +170,24 @@ curl -X POST http://127.0.0.1:9999/api/page --data "content=# Hello world\n\nThi
 #### 请求示例
 
 ```bash
-curl http://127.0.0.1:9999/api/page/4 -H "AUTHORIZATION: Bearer TVC66rtXnv7pw3jge4EtyC7qtyKKPxjjGyVUi4K2D"
+curl --request GET \
+  --url http://127.0.0.1:9999/api/page/2 \
+  --header 'Authorization: Bearer hdtvEsu3FNEsyR069XNeTCzKSUFyWzAgSe7GcCjy'
 ```
 
 #### 响应示例
 
 ```json
 {
-    "code":200,
-    "msg":"OK",
-    "data":{
-        "id":"4",
-        "uid":"1",
-        "content":"# Hello world\n\nThis is another demo page.",
-        "created_at":"2017-11-09 20:36:52",
-        "updated_at":"2017-11-09 20:36:52"
-    }
+  "code": 200,
+  "msg": "ok",
+  "data": {
+    "id": 2,
+    "uid": 1,
+    "content": "# TinyMe \n\n>  A tiny PHP framework based on FlightPHP and Medoo.",
+    "created_at": "2026-01-17 01:16:47",
+    "updated_at": "2026-01-17 01:16:47"
+  }
 }
 ```
 
@@ -189,22 +198,24 @@ curl http://127.0.0.1:9999/api/page/4 -H "AUTHORIZATION: Bearer TVC66rtXnv7pw3jg
 #### 请求示例
 
 ```bash
-# PUT raw data (in `json` format)
-curl -X PUT http://127.0.0.1:9999/api/page/4 --data '{"content":"# Demo\n\nThis is another demo page."}' -H "AUTHORIZATION: Bearer TVC66rtXnv7pw3jge4EtyC7qtyKKPxjjGyVUi4K2D"
-
-# hijack PUT method by passing `_method=put` parameter with POST
-curl -X POST http://127.0.0.1:9999/api/page/4 --data "_method=put&content=# Demo\n\nThis is another demo page." -H "AUTHORIZATION: Bearer TVC66rtXnv7pw3jge4EtyC7qtyKKPxjjGyVUi4K2D"
+curl --request PUT \
+  --url http://127.0.0.1:9999/api/page/2 \
+  --header 'Authorization: Bearer hdtvEsu3FNEsyR069XNeTCzKSUFyWzAgSe7GcCjy' \
+  --header 'Content-Type: application/json' \
+  --data '{
+  "content": "# Flight \n\n>  Flight is a fast, simple, extensible framework for PHP. Flight enables you to quickly and easily build RESTful web applications."
+}'
 ```
 
 #### 响应示例
 
 ```json
 {
-    "code":200,
-    "msg":"OK",
-    "data":{
-        "result":"update success!"
-    }
+  "code": 200,
+  "msg": "ok",
+  "data": {
+    "result": "update success!"
+  }
 }
 ```
 
@@ -215,70 +226,95 @@ curl -X POST http://127.0.0.1:9999/api/page/4 --data "_method=put&content=# Demo
 #### 请求示例
 
 ```bash
-# DELETE
-curl -X DELETE http://127.0.0.1:9999/api/page/4 -H "AUTHORIZATION: Bearer TVC66rtXnv7pw3jge4EtyC7qtyKKPxjjGyVUi4K2D"
-
-# hijack DELETE method by passing `_method=delete` parameter with POST
-curl -X POST http://127.0.0.1:9999/api/page/4 --data "_method=delete" -H "AUTHORIZATION: Bearer TVC66rtXnv7pw3jge4EtyC7qtyKKPxjjGyVUi4K2D"
+curl --request DELETE \
+  --url http://127.0.0.1:9999/api/page/2 \
+  --header 'Authorization: Bearer hdtvEsu3FNEsyR069XNeTCzKSUFyWzAgSe7GcCjy' \
+  --header 'Content-Type: application/json'
 ```
 
 #### 响应示例
 
 ```json
 {
-    "code":200,
-    "msg":"OK",
-    "data":{
-        "result":"delete success!"
-    }
+  "code": 200,
+  "msg": "ok",
+  "data": {
+    "result": "delete success!"
+  }
 }
 ```
 
 ## 文档
 
-`TinyMe` 使用第三方组件，你可以从他们各自网站获得相应帮助。
-
 ### 核心
 
-基于 `mikecao/flight` ，官方网站： http://flightphp.com/ ， https://github.com/mikecao/flight 。
-
+基于 `flightphp/core` [仓库](https://github.com/flightphp/core)，官方网站：https://flightphp.com/ 。
 
 ### 缓存（Cache）
 
 ```php
-if (Flight::cache('data')->contains('foo')) {
-    $unit = Flight::cache('data')->fetch('foo');
-} else {
-    $bar = 'bar cache';
-    Flight::cache('data')->save('foo', $bar);
-}
+use flight\Cache;
+
+$app = Flight::app();
+// 注册缓存
+$app->register('cache', Cache::class, [__DIR__ . '/../storage/cache']);
+
+$app->cache()->set('hello', 'world', 60 * 60);
+$world = $app->cache()->get('hello');
 ```
 
-基于 `doctrine/cache` ，官方网站： http://docs.doctrine-project.org/en/latest/reference/caching.html ， https://github.com/doctrine/cache 。
+基于 `flightphp/cache` [仓库](https://github.com/flightphp/cache)，官方网站：https://docs.flightphp.com/en/v3/awesome-plugins/php-file-cache 。
 
 ### 日志（Log）
 
 ```php
-$logger = Flight::log()->debug('debug log');
+use Monolog\Logger;
+use Monolog\Level;
+use Monolog\Handler\StreamHandler;
+
+$app = Flight::app();
+// 注册日志记录器
+$app->register('logger', Logger::class, ['tinyme'], function($logger) {
+    $logPath = __DIR__ . '/../storage/logs/app.log';
+    $logger->pushHandler(new StreamHandler($logPath, Level::Debug));
+});
 ```
 
-基于 `katzgrau/klogger` ， 官方网站： https://github.com/katzgrau/KLogger 。
+基于 `monolog/monolog` [仓库](https://github.com/Seldaek/monolog)，官方网站：https://seldaek.github.io/monolog/ 。
 
 
 ### 数据库（Database）与模型（Model）
 
 ```php
-Flight::model('Page')->getPageByID(1);
-Flight::db()->get('tm_page', '*', [
-            'id' => 1
-            ]);
+use Medoo\Medoo;
+use app\utils\Helper;
+
+$app = Flight::app();
+
+// 注册数据库
+$app->register('db', Medoo::class, [
+    [
+        'type' => 'mysql',
+        'host' => Helper::env('DB_HOST', 'localhost'),
+        'port' => Helper::env('DB_PROT', 3306),
+        'database' => Helper::env('DB_DATABASE', 'tinyme'),
+        'username' => Helper::env('DB_USERNAME', 'root'),
+        'password' => Helper::env('DB_PASSWORD', 'root'),
+        'charset' => 'utf8mb4',
+        'collation' => 'utf8mb4_unicode_ci',
+    ]
+]);
+
+$page = $app->db()->get('tm_page', '*', [
+    'id' => 1
+]);
 ```
 
-基于 `catfan/medoo` ，官方网站 : https://github.com/catfan/medoo ， http://medoo.in/doc 。
+基于 `catfan/medoo` [仓库](https://github.com/catfan/medoo)，官方网站：https://medoo.in/doc 。
 
 ## 参考
 
-[flight-app-demo](https://github.com/xubodreamsky/flight-app-demo)
+- [flightphp/skeleton](https://github.com/flightphp/skeleton)
 
 ## 授权协议
 
