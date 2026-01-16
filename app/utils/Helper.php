@@ -7,12 +7,25 @@ use flight\net\Request;
 
 class Helper {
 
-    public static function env($name, $default = null)
+    /**
+     * Get environment variable.
+     * 
+     * @param string $name
+     * @param string|null $default
+     * @return string|null
+     */
+    public static function env(string $name, ?string $default = null): ?string
     {
         return getenv($name) ? : $default;
     }
 
-    public static function expectsJson(Request $request)
+    /**
+     * Check if request expects JSON response.
+     * 
+     * @param Request $request
+     * @return bool
+     */
+    public static function expectsJson(Request $request): bool
     {
         $acceptStr = $request->accept;
         $acceptAny = $acceptJson = false;
@@ -26,9 +39,15 @@ class Helper {
         $isAjax = $request->ajax;
         return ($isAjax && !$isPjax && $acceptAny) || $acceptJson;
     }
-
-
-    public static function strContains(string $haystack, string $needle)
+    
+    /**
+     * Check if a string contains another string.
+     * 
+     * @param string $haystack
+     * @param string $needle
+     * @return bool
+     */
+    public static function strContains(string $haystack, string $needle): bool
     {
         // >= php 8+ 
         if (function_exists('str_contains')) {
@@ -39,7 +58,13 @@ class Helper {
         }
     }
 
-    public static function generateToken($length = 40)
+     /**
+      * Generate a random token.
+      * 
+      * @param int $length
+      * @return string
+      */
+    public static function generateToken(int $length = 40): string
     {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $token = '';
@@ -49,7 +74,14 @@ class Helper {
         return $token;
     }
 
-    public static function encryptPassword($password, $salt = 'TinyMe&168')
+     /**
+      * Encrypt password using MD5.
+      * 
+      * @param string $password
+      * @param string $salt
+      * @return string
+      */
+    public static function encryptPassword(string $password, string $salt = 'TinyMe&168'): string
     {
         return md5(substr(md5($password), 6, -8).$salt);
     }
