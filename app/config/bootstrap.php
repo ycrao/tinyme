@@ -23,12 +23,12 @@ error_reporting(E_ALL);
 
 // Character encoding
 if (function_exists('mb_internal_encoding') === true) {
-	mb_internal_encoding('UTF-8');
+    mb_internal_encoding('UTF-8');
 }
 
 // Default Locale Change as needed or feel free to remove.
 if (function_exists('setlocale') === true) {
-	setlocale(LC_ALL, 'en_US.UTF-8');
+    setlocale(LC_ALL, 'en_US.UTF-8');
 }
 
 /**********************************************
@@ -36,7 +36,7 @@ if (function_exists('setlocale') === true) {
  **********************************************/
 // Get the $app var to use below
 if (empty($app) === true) {
-	$app = Flight::app();
+    $app = Flight::app();
 }
 
 // This autoloads your code in the app directory so you don't have to require_once everything

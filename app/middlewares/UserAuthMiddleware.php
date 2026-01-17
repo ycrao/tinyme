@@ -12,7 +12,7 @@ class UserAuthMiddleware
     public function __construct(Engine $app)
     {
         $this->app = $app;
-	}
+    }
 
     public function before(array $params): void
     {
