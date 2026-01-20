@@ -30,6 +30,12 @@ composer start
 ```
 You can view this project page by typing `http://127.0.0.1:9999` url in your browser.
 
+## Screenshots
+
+![TinyMe V2 Login](./screenshots/tinyme-v2-login.png)
+
+![TinyMe V2 Pages](./screenshots/tinyme-v2-pages.png)
+
 ## API Service
 
 Please import `sql\tinyme.sql` to your local MySQL database, then modify `.env` file configuration. 

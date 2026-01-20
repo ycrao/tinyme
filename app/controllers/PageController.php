@@ -16,12 +16,10 @@ class PageController extends ApiController
 
     public function index()
     {
-        $uid = $this->app->get('authUid');
-
         $page = intval($this->app->request()->query->page ?? 1);
         $perPage = intval($this->app->request()->query->per_page ?? 10);
 
-        $pages = $this->pageModel->getPages($uid, $page, $perPage);
+        $pages = $this->pageModel->getPages($this->uid, $page, $perPage);
         $this->return200($pages);
     }
 

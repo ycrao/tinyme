@@ -66,7 +66,7 @@
         <div class="logo"><?php echo $name; ?></div>
         <div class="tagline"><?php echo $desc; ?></div>
         <div class="links">
-            <a class="btn primary" href="/">Get started</a>
+            <a class="btn primary" href="/app/">To Login Page</a>
             <a class="btn" href="https://github.com/ycrao/tinyme">View on GitHub</a>
         </div>
         <div class="meta">

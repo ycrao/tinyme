@@ -31,6 +31,12 @@ composer start
 
 在浏览器中输入 `http://127.0.0.1:9999` 网址，您就可以看到本项目页面。
 
+## 截图
+
+![TinyMe V2 Login](./screenshots/tinyme-v2-login.png)
+
+![TinyMe V2 Pages](./screenshots/tinyme-v2-pages.png)
+
 ## API 服务
 
 请导入 `sql\tinyme.sql` 到你本地数据库，然后修改 `.env` 配置。
